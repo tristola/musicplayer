@@ -2,7 +2,8 @@ import {Colors} from '../../Themes/'
 
 export default {
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: Colors.transparent
   },
   navBar: {
     backgroundColor: Colors.background
