@@ -17,11 +17,15 @@ export const INITIAL_STATE = Immutable({
   song: null
 })
 
-export const play = (state) =>
-  state.merge({ playing: true })
+export const play = (state) => {
+  console.tron.log('play')
+  return state.merge({ playing: true })
+}
 
-export const pause = (state) =>
-    state.merge({ playing: false })
+export const pause = (state) => {
+  console.tron.log('pause')
+  return state.merge({ playing: false })
+}
 
 // Something went wrong somewhere.
 export const setSong = state =>
@@ -30,7 +34,5 @@ state.merge({ playing: false })
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.PLAYER_PLAY]: play,
-  [Types.PLAYER_PAUSE]: pause,
   [Types.PLAYER_SET_SONG]: setSong
 })
