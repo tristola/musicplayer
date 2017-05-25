@@ -6,7 +6,7 @@ import Immutable from 'seamless-immutable'
 const { Types, Creators } = createActions({
   playerPlay: null,
   playerPause: null,
-  playerSetSong: ['song']
+  playerSetSongName: ['song']
 })
 
 export const PlayerTypes = Types
@@ -14,7 +14,7 @@ export default Creators
 
 export const INITIAL_STATE = Immutable({
   playing: false,
-  song: null
+  songName: null
 })
 
 export const play = (state) => {
@@ -27,12 +27,15 @@ export const pause = (state) => {
   return state.merge({ playing: false })
 }
 
-// Something went wrong somewhere.
-export const setSong = state =>
-state.merge({ playing: false })
+export const setSongName = (state, { song }) => {
+  const songName = song.file
+  return state.merge({ songName })
+}
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.PLAYER_SET_SONG]: setSong
+  [Types.PLAYER_PLAY]: play,
+  [Types.PLAYER_PAUSE]: pause,
+  [Types.PLAYER_SET_SONG_NAME]: setSongName
 })

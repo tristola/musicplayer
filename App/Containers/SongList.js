@@ -3,10 +3,11 @@ import { ScrollView, Text, View, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import Song from '../Components/Song'
 import styles from './Styles/SongListStyle'
+import PlayerActions from '../Redux/PlayerRedux'
 
 class SongList extends React.Component {
   render () {
-    const { songs } = this.props
+    const { songs, setSong } = this.props
     return (
       <View style={styles.container}>
         <View style={{flex: 0.1, flexDirection: 'row'}}>
@@ -18,7 +19,7 @@ class SongList extends React.Component {
         <ScrollView>
           <KeyboardAvoidingView behavior='position'>
             {songs.map((song, index) =>
-              <Song key={index} song={song.metadata} />
+              <Song onPress={() => setSong(song)} key={index} song={song.metadata} />
             )}
           </KeyboardAvoidingView>
         </ScrollView>
@@ -34,6 +35,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    setSong: (songName) => dispatch(PlayerActions.playerSetSongName(songName))
   }
 }
 

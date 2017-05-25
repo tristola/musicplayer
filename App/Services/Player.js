@@ -1,14 +1,29 @@
+import Sound from 'react-native-sound'
+
 const Player = {
   song: null,
+  songname: null,
   playing: true,
-  play: () => {
-    console.tron.log('play service:')
+  play: (songname) => {
+    if (this.song) {
+      this.song.play()
+      this.playing = true
+    }
   },
-  setSong: (song) => {
-    this.song = song
+  getSong: () => this.song,
+  setSong: (newsong) => {
+    console.tron.log('setSong:' + newsong)
+    this.song && this.song.release()
+    this.song = new Sound(newsong, '/', (error) => {
+      if (error) {
+        console.tron.log('failed to load the song')
+      }
+    })
   },
   pause: () => {
-    console.tron.log('pause: service')
+    this.song.pause()
+    this.playing = false
+    console.tron.log('play service:' + this.playing)
   }
 }
 export default Player
