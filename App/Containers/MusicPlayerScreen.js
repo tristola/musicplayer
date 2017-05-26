@@ -3,12 +3,14 @@ import { View } from 'react-native'
 import SongList from '../Containers/SongList'
 import { connect } from 'react-redux'
 import styles from './Styles/MusicPlayerScreenStyle'
+import PlayerArea from '../Containers/PlayerArea'
 
 class MusicPlayer extends React.Component {
   render () {
     return (
       <View style={styles.container}>
         <SongList />
+        <PlayerArea />
       </View>
     )
   }
