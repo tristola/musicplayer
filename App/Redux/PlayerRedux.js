@@ -14,22 +14,22 @@ export default Creators
 
 export const INITIAL_STATE = Immutable({
   playing: false,
-  songName: null
+  songName: null,
+  metadata: null
 })
 
 export const play = (state) => {
-  console.tron.log('play')
   return state.merge({ playing: true })
 }
 
 export const pause = (state) => {
-  console.tron.log('pause')
   return state.merge({ playing: false })
 }
 
 export const setSongName = (state, { song }) => {
   const songName = song.file
-  return state.merge({ songName })
+  const metadata = song.metadata
+  return state.merge({ songName, metadata })
 }
 
 /* ------------- Hookup Reducers To Types ------------- */
