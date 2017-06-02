@@ -1,12 +1,30 @@
 import React from 'react'
-import { View, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity, Text } from 'react-native'
 import { connect } from 'react-redux'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import PlayerActions from '../Redux/PlayerRedux'
+import { Colors } from '../Themes/'
 
 import styles from './Styles/PlayerAreaStyle'
-const PlayerArea = ({ play, pause }) => (
+
+const textStyle = {
+  fontSize: 20,
+  color: Colors.snow
+}
+
+const PlayerArea = ({ play, pause, metadata }) => (
   <View style={styles.container}>
+    <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+      <Text style={textStyle}>
+        {metadata && metadata.title}
+      </Text>
+      <Text style={textStyle}>
+        {metadata && metadata.artist}
+      </Text>
+      <Text style={textStyle}>
+        {metadata && metadata.genre}
+      </Text>
+    </View>
     <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
       <TouchableOpacity onPress={play} style={{ borderWidth: 2, borderColor: 'white', padding: 10, margin: 10 }}>
         <Icon size={25} name='play' color='#fff' />
