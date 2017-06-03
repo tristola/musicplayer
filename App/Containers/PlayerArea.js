@@ -12,11 +12,11 @@ const textStyle = {
   color: Colors.snow
 }
 
-const PlayerArea = ({ playing, play, pause, metadata }) => (
+const PlayerArea = ({ playing, play, pause, stop, metadata }) => (
   <View>
     <View style={styles.container}>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <View style={{flex: 0.8, flexDirection: 'column', justifyContent: 'center'}}>
+      <View style={{postition: 'absolute', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <View style={{paddingBottom: 40, flex: 0.8, flexDirection: 'column', justifyContent: 'center'}}>
           <Text style={textStyle}>
             title: {metadata && metadata.title}
           </Text>
@@ -24,29 +24,17 @@ const PlayerArea = ({ playing, play, pause, metadata }) => (
             artist: {metadata && metadata.artist}
           </Text>
         </View>
-        <View style={{flex: 0.8, flexDirection: 'column', justifyContent: 'center'}}>
-          <Text style={textStyle}>
-            genre:{metadata && metadata.genre}
-          </Text>
-          <Text style={textStyle}>
-            duration:{metadata && metadata.duration}
-          </Text>
-        </View>
       </View>
     </View>
     <TouchableOpacity
       onPress={playing ? pause : play}
-      style={{
-        position: 'absolute',
-        left: 0,
-        bottom: 50
-      }}
+      style={styles.playpause}
       >
-      <PlayPause playing={playing} />
+      <PlayPause size={300} playing={playing} />
     </TouchableOpacity>
     <TouchableOpacity
       playing={playing}
-      onPress={pause}
+      onPress={stop}
       style={styles.pause}
     >
       <Icon size={30} name='stop' color='#fff' />
@@ -64,7 +52,8 @@ const mapStateToProps = ({player}) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  play: () => dispatch(PlayerActions.playerPlay()),
-  pause: () => dispatch(PlayerActions.playerPause())
+  play: () => dispatch(PlayerActions.playerPlayPressed()),
+  pause: () => dispatch(PlayerActions.playerPausePressed()),
+  stop: () => dispatch(PlayerActions.playerStopPressed())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerArea)

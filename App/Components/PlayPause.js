@@ -16,7 +16,7 @@ export default class PlayPause extends React.Component {
     this.setState({play: !this.state.play})
     Animated.timing(this.state.progress, {
       toValue: tovalue,
-      duration: 500
+      duration: 1000
     }).start()
     this.props.onPress && this.props.onPress()
   }
@@ -29,11 +29,12 @@ export default class PlayPause extends React.Component {
   }
 
   render () {
+    const { size = 200 } = this.props
     return (
       <Animation
         style={{
-          width: 200,
-          height: 200
+          width: size,
+          height: size
         }}
         source={require('./play_pause.json')}
         progress={this.state.progress}
