@@ -6,6 +6,9 @@ import Immutable from 'seamless-immutable'
 const { Types, Creators } = createActions({
   playerPlay: null,
   playerPause: null,
+  playerPlayPressed: null,
+  playerPausePressed: null,
+  playerStopPressed: null,
   playerSetSongName: ['song']
 })
 
