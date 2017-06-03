@@ -3,6 +3,8 @@
 
 * Standard compliant React Native App Utilizing [Ignite](https://github.com/infinitered/ignite)
 
+![play-pause animation](https://github.com/tristola/musicplayer/blob/master/player.gif)
+
 ## :arrow_up: How to Setup
 
 **Step 1:** git clone this repo:
@@ -59,4 +61,3 @@ Secrets.GOOGLE_MAPS_API_KEY  // 'abcdefgh'
 ```
 
 The `.env` file is ignored by git keeping those secrets out of your repo.
-
