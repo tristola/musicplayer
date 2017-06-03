@@ -27,6 +27,7 @@ const PlayerArea = ({ playing, play, pause, stop, metadata }) => (
       </View>
     </View>
     <TouchableOpacity
+      activeOpacity={1.0}
       onPress={playing ? pause : play}
       style={styles.playpause}
       >
