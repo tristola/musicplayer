@@ -15,13 +15,13 @@ const textStyle = {
 const PlayerArea = ({ playing, play, pause, stop, metadata }) => (
   <View>
     <View style={styles.container}>
-      <View style={{postition: 'absolute', flexDirection: 'row', justifyContent: 'space-between'}}>
-        <View style={{paddingBottom: 40, flex: 0.8, flexDirection: 'column', justifyContent: 'center'}}>
+      <View style={{backgroundColor: 'red', position: 'absolute', left: 0, bottom: 100, height: 100}}>
+        <View style={{flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start'}}>
           <Text style={textStyle}>
-            title: {metadata && metadata.title}
+            {metadata && metadata.title}
           </Text>
           <Text style={textStyle}>
-            artist: {metadata && metadata.artist}
+            {metadata && metadata.artist}
           </Text>
         </View>
       </View>
@@ -30,7 +30,7 @@ const PlayerArea = ({ playing, play, pause, stop, metadata }) => (
       onPress={playing ? pause : play}
       style={styles.playpause}
       >
-      <PlayPause size={300} playing={playing} />
+      <PlayPause size={200} playing={playing} />
     </TouchableOpacity>
     <TouchableOpacity
       playing={playing}

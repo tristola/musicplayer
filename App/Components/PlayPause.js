@@ -29,7 +29,7 @@ export default class PlayPause extends React.Component {
   }
 
   render () {
-    const { size = 200 } = this.props
+    const { size = 100 } = this.props
     return (
       <Animation
         style={{

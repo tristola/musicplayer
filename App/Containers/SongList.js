@@ -7,9 +7,9 @@ import PlayerActions from '../Redux/PlayerRedux'
 
 class SongList extends React.Component {
   render () {
-    const { songs, setSong } = this.props
+    const { songs, setSong, style = {} } = this.props
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, style]}>
         <View style={{flex: 0.1, flexDirection: 'row'}}>
           <Text style={styles.text}>Genre</Text>
           <Text style={styles.text}>Artist</Text>

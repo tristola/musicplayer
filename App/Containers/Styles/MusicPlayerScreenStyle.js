@@ -10,5 +10,8 @@ export default StyleSheet.create({
   text: {
     fontSize: Fonts.size.h4,
     color: Colors.snow
+  },
+  songlist: {
+    paddingBottom: 10
   }
 })
