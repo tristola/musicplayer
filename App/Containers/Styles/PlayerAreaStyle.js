@@ -1,27 +1,27 @@
 import { StyleSheet } from 'react-native'
+import { Colors } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
+    flexDirection: 'row',
     paddingLeft: 25,
     paddingRight: 25,
     borderRadius: 5,
     backgroundColor: 'rgba(0, 0, 0, 0.5)'
   },
-  pause: {
+  stop: {
     position: 'absolute',
-    right: 0,
-    bottom: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 100,
-    height: 100,
-    borderRadius: 100 / 2
+    right: 25,
+    bottom: 40
   },
   playpause: {
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    borderRadius: 100,
+    backgroundColor: 'rgba(255, 255, 255, 0.0)',
     position: 'absolute',
-    right: 20,
-    bottom: -10
+    right: 40,
+    bottom: -40
+  },
+  textStyle: {
+    fontSize: 25,
+    color: Colors.bloodOrange
   }
 })

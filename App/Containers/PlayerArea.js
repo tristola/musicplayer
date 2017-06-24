@@ -8,22 +8,20 @@ import styles from './Styles/PlayerAreaStyle'
 import PlayPause from '../Components/PlayPause'
 
 const textStyle = {
-  fontSize: 20,
-  color: Colors.snow
+  fontSize: 25,
+  color: Colors.bloodOrange
 }
 
 const PlayerArea = ({ playing, play, pause, stop, metadata }) => (
   <View>
     <View style={styles.container}>
-      <View style={{backgroundColor: 'red', position: 'absolute', left: 0, bottom: 100, height: 100}}>
-        <View style={{flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start'}}>
-          <Text style={textStyle}>
-            {metadata && metadata.title}
-          </Text>
-          <Text style={textStyle}>
-            {metadata && metadata.artist}
-          </Text>
-        </View>
+      <View style={{flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start', paddingBottom: 20}}>
+        <Text style={textStyle}>
+          {metadata && metadata.title}
+        </Text>
+        <Text style={textStyle}>
+          {metadata && metadata.artist}
+        </Text>
       </View>
     </View>
     <TouchableOpacity
@@ -36,7 +34,7 @@ const PlayerArea = ({ playing, play, pause, stop, metadata }) => (
     <TouchableOpacity
       playing={playing}
       onPress={stop}
-      style={styles.pause}
+      style={styles.stop}
     >
       <Icon size={30} name='stop' color='#fff' />
     </TouchableOpacity>
