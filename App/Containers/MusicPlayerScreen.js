@@ -9,7 +9,7 @@ class MusicPlayer extends React.Component {
   render () {
     return (
       <View style={styles.container}>
-        <SongList style={{paddingBottom: 200}} />
+        <SongList style={{paddingBottom: 60}} />
         <PlayerArea />
       </View>
     )
