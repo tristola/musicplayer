@@ -64,6 +64,8 @@ export function * scanFiles (action) {
       yield put(SonglistActions.songlistAdd(allMeta))
     }
   } catch (error) {
+    yield put(SonglistActions.songlistAdd([]))
+
     console.tron.display({
       name: 'Failed to read data',
       preview: `folder:${MEDIA_DIR}`,
