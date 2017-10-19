@@ -4,10 +4,12 @@ import { Colors } from '../../Themes/'
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
+    height: 120,
+    paddingTop: 20,
     paddingLeft: 25,
     paddingRight: 25,
     borderRadius: 5,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    backgroundColor: '#d7cec7'
   },
   stop: {
     position: 'absolute',
@@ -22,6 +24,6 @@ export default StyleSheet.create({
   },
   textStyle: {
     fontSize: 25,
-    color: Colors.bloodOrange
+    color: '#76323f'
   }
 })

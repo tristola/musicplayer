@@ -5,7 +5,7 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   container: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.8)'
+    backgroundColor: '#c09f80'
   },
   text: {
     fontSize: Fonts.size.h4,

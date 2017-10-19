@@ -6,7 +6,7 @@ export default StyleSheet.create({
     flex: 1,
     paddingLeft: 40,
     paddingTop: Metrics.doubleBaseMargin,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    backgroundColor: 'rgba(0, 0, 0, 0)'
   },
   text: {
     flex: 1,
