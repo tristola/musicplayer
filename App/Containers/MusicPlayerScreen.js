@@ -4,7 +4,7 @@ import SongList from '../Containers/SongList'
 import { connect } from 'react-redux'
 import styles from './Styles/MusicPlayerScreenStyle'
 import PlayerArea from '../Containers/PlayerArea'
-
+import Filter from './../Components/Filter'
 class MusicPlayer extends React.Component {
   render () {
     return (
