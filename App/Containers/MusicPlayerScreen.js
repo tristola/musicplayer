@@ -18,7 +18,7 @@ class MusicPlayer extends React.Component {
     this.setState({currentlyDisplayed: props.songs})
   }
   filterDisplayed (text) {
-    const songContains = (a, p, v) => R.path(['metadata', p], a).toLowerCase().indexOf(text.toLowerCase()) > -1
+    const songContains = (a, p) => R.path(['metadata', p], a).toLowerCase().indexOf(text.toLowerCase()) > -1
     const currentlyDisplayed = this.props.songs
       .filter(song =>
         songContains(song, 'title') ||
