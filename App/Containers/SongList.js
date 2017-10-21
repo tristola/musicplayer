@@ -1,27 +1,22 @@
 import React from 'react'
-import { ScrollView, Text, View, KeyboardAvoidingView } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { connect } from 'react-redux'
 import Song from '../Components/Song'
 import styles from './Styles/SongListStyle'
 import PlayerActions from '../Redux/PlayerRedux'
+import { List } from 'react-native-elements'
 
 class SongList extends React.Component {
   render () {
-    const { songs, setSong, style = {} } = this.props
+    const { songs, setSong } = this.props
     return (
-      <View style={[styles.container, style]}>
-        <View style={{flex: 0.1, flexDirection: 'row'}}>
-          <Text style={styles.text}>Genre</Text>
-          <Text style={styles.text}>Artist</Text>
-          <Text style={styles.text}>Title</Text>
-          <Text style={styles.text}>Duration</Text>
-        </View>
+      <View style={[styles.container]}>
         <ScrollView>
-          <KeyboardAvoidingView behavior='position'>
+          <List>
             {songs.map((song, index) =>
               <Song onPress={() => setSong(song)} key={index} song={song.metadata} />
             )}
-          </KeyboardAvoidingView>
+          </List>
         </ScrollView>
       </View>
     )
@@ -29,8 +24,7 @@ class SongList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { songs = [] } = state.songs
-  return { songs }
+  return { }
 }
 
 const mapDispatchToProps = (dispatch) => {

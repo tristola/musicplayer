@@ -1,12 +1,10 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes/'
+import { Colors } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    paddingLeft: 40,
-    paddingTop: Metrics.doubleBaseMargin,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    backgroundColor: 'rgba(0, 0, 0, 0)'
   },
   text: {
     flex: 1,

@@ -5,7 +5,9 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    paddingTop: Metrics.baseMargin
+    paddingTop: Metrics.baseMargin,
+    borderBottomColor: 'rgba(0, 0, 0, 1)',
+    borderBottomWidth: StyleSheet.hairlineWidth
   },
   text: {
     flex: 1,
