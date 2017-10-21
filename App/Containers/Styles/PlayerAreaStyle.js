@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-import { Colors } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
@@ -8,29 +7,32 @@ export default StyleSheet.create({
     paddingTop: 20,
     paddingLeft: 25,
     paddingRight: 25,
-    borderRadius: 5,
-    backgroundColor: '#d7cec7'
+    backgroundColor: 'rgba(0, 0, 0, 0.8)'
   },
   stop: {
-    borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
     height: 100,
     width: 100,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
     position: 'absolute',
     right: 0,
-    bottom: 10
+    bottom: 6
+  },
+  delayedstart: {
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    position: 'absolute',
+    right: 130,
+    bottom: 40
   },
   playpause: {
-    borderRadius: 200/2,
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
     position: 'absolute',
-    right: 40,
-    bottom: -40
+    right: 90,
+    bottom: 40
   },
   textStyle: {
     fontSize: 25,
-    color: '#76323f'
+    color: 'rgba(255, 255, 255, 1)'
   }
 })

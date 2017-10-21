@@ -3,7 +3,7 @@
 
 * Standard compliant React Native App Utilizing [Ignite](https://github.com/infinitered/ignite)
 
-![play-pause animation](https://github.com/tristola/musicplayer/blob/master/player.gif)
+![play-pause animation](https://github.com/tristola/musicplayer/blob/master/player.png)
 
 ## :arrow_up: How to Setup
 

@@ -5,11 +5,10 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import PlayerActions from '../Redux/PlayerRedux'
 import { Colors } from '../Themes/'
 import styles from './Styles/PlayerAreaStyle'
-import PlayPause from '../Components/PlayPause'
 
 const textStyle = {
   fontSize: 25,
-  color: Colors.bloodOrange
+  color: Colors.snow
 }
 
 const PlayerArea = ({ playing, play, pause, stop, metadata }) => (
@@ -23,20 +22,23 @@ const PlayerArea = ({ playing, play, pause, stop, metadata }) => (
           {metadata && metadata.artist}
         </Text>
       </View>
-      <TouchableOpacity
-      activeOpacity={1.0}
-      onPress={() => setTimeout(play, 5000)}
-      >
-      <Text style={textStyle}>Delayed Start</Text>
-    </TouchableOpacity>
-
     </View>
+    <TouchableOpacity
+      activeOpacity={1.0}
+      style={styles.delayedstart}
+      onPress={() => setTimeout(play, 2000)}
+      >
+      { playing
+       ? <View />
+       : <Icon size={30} name={'play-circle-o'} color='#fff' />
+      }
+    </TouchableOpacity>
     <TouchableOpacity
       activeOpacity={1.0}
       onPress={playing ? pause : play}
       style={styles.playpause}
       >
-      <PlayPause size={200} playing={playing} />
+      <Icon size={30} name={playing ? 'pause' : 'play'} color='#fff' />
     </TouchableOpacity>
     <TouchableOpacity
       playing={playing}
