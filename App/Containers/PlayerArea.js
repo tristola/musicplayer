@@ -27,7 +27,7 @@ const PlayerArea = ({ playing, play, pause, stop, metadata }) => (
       activeOpacity={1.0}
       onPress={() => setTimeout(play, 5000)}
       >
-      <Text style={{textStyle}}>Delayed Start</Text>
+      <Text style={textStyle}>Delayed Start</Text>
     </TouchableOpacity>
 
     </View>

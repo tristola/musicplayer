@@ -4,7 +4,7 @@ import { Colors } from '../../Themes/'
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
-    height: 120,
+    height: 100,
     paddingTop: 20,
     paddingLeft: 25,
     paddingRight: 25,
@@ -12,12 +12,19 @@ export default StyleSheet.create({
     backgroundColor: '#d7cec7'
   },
   stop: {
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+    width: 100,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     position: 'absolute',
-    right: 25,
-    bottom: 40
+    right: 0,
+    bottom: 10
   },
   playpause: {
-    backgroundColor: 'rgba(255, 255, 255, 0.0)',
+    borderRadius: 200/2,
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
     position: 'absolute',
     right: 40,
     bottom: -40

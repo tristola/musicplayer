@@ -12,6 +12,5 @@ export default StyleSheet.create({
     color: Colors.snow
   },
   songlist: {
-    paddingBottom: 10
   }
 })
