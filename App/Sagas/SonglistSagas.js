@@ -40,9 +40,15 @@ async function getAllFiles (allDirectories, allFiles) {
 async function addMetadata (allFiles, resultMetadata) {
   for (let i = 0; i < allFiles.length; i++) {
     const file = allFiles[i]
-    const metadata = await MediaMeta.get(file)
-    if (metadata) {
-      resultMetadata.push({file, metadata})
+    try {
+      const metadata = await MediaMeta.get(file)
+      if (metadata) {
+        resultMetadata.push({file, metadata})
+      }
+    } catch (err) {
+      console.tron.display({
+        name: `FAILED TO READ FILE: ${file}`
+      })
     }
   }
 }
@@ -52,6 +58,7 @@ export function * scanFiles (action) {
   const allfiles = []
   const allMeta = []
   try {
+    // check the folders exist
     yield call(getFoldersRecursive, MEDIA_DIR, all)
     yield call(getAllFiles, all, allfiles)
     yield call(addMetadata, allfiles, allMeta)

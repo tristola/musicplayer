@@ -11,44 +11,77 @@ const textStyle = {
   color: Colors.snow
 }
 
-const PlayerArea = ({ playing, play, pause, stop, metadata }) => (
-  <View>
-    <View style={styles.container}>
-      <View style={{flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start', paddingBottom: 20}}>
-        <Text style={textStyle}>
-          {metadata && metadata.title}
-        </Text>
-        <Text style={textStyle}>
-          {metadata && metadata.artist}
-        </Text>
-      </View>
-    </View>
-    <TouchableOpacity
-      activeOpacity={1.0}
-      style={styles.delayedstart}
-      onPress={() => setTimeout(play, 2000)}
-      >
-      { playing
-       ? <View />
-       : <Icon size={30} name={'play-circle-o'} color='#fff' />
+class PlayerArea extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      count: 5,
+      counting: false
+    }
+  }
+  componentDidMount () {
+    const intervalId = setInterval(() => this.timer(), 1000)
+    this.setState({intervalId: intervalId})
+  }
+  componentWillUnmount () {
+    clearInterval(this.state.intervalId)
+  }
+
+  timer = () => {
+    const {count, counting} = this.state
+    if (counting) {
+      let newCount = count - 1
+      if (newCount === 0) {
+        this.props.play()
+        this.setState({count: 5, counting: false})
+      } else {
+        this.setState({count: newCount})
       }
-    </TouchableOpacity>
-    <TouchableOpacity
-      activeOpacity={1.0}
-      onPress={playing ? pause : play}
-      style={styles.playpause}
+    }
+  }
+  render () {
+    const { playing, play, pause, stop, metadata } = this.props
+    const { count } = this.state
+    return (
+      <View>
+        <View style={styles.container}>
+          <View style={{flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start', paddingBottom: 20}}>
+            <Text style={textStyle}>
+              {metadata && metadata.title}
+            </Text>
+            <Text style={textStyle}>
+              {metadata && metadata.artist}
+            </Text>
+          </View>
+        </View>
+        <TouchableOpacity
+          activeOpacity={1.0}
+          style={styles.delayedstart}
+          onPress={() => this.setState({counting: true})}
+        >
+          { count !== 5
+        ? <Text style={{fontSize: 30, color: 'white'}}>{count}</Text>
+        : <Icon size={30} name={'play-circle-o'} color={playing ? 'rgba(0, 0, 0, 0)' : '#fff'} />
+        }
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={1.0}
+          onPress={playing ? pause : play}
+          style={styles.playpause}
+        >
+          <Icon size={30} name={playing ? 'pause' : 'play'} color='#fff' />
+        </TouchableOpacity>
+        <TouchableOpacity
+          playing={playing}
+          onPress={stop}
+          style={styles.stop}
       >
-      <Icon size={30} name={playing ? 'pause' : 'play'} color='#fff' />
-    </TouchableOpacity>
-    <TouchableOpacity
-      playing={playing}
-      onPress={stop}
-      style={styles.stop}
-    >
-      <Icon size={30} name='stop' color='#fff' />
-    </TouchableOpacity>
-  </View>
-)
+          <Icon size={30} name='stop' color='#fff' />
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
 
 const mapStateToProps = ({player}) => {
   const {file, metadata, playing} = player

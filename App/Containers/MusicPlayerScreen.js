@@ -11,21 +11,22 @@ class MusicPlayer extends React.Component {
     super(props)
     this.state = {
       searchTerm: '',
-      currentlyDisplayed: []
+      currentlyDisplayed: [],
+      selectedGenres: []
     }
   }
   componentWillReceiveProps (props) {
-    this.setState({currentlyDisplayed: props.songs})
+    this.setState({currentlyDisplayed: props.songs, selectedGenres: props.genres})
   }
   filterDisplayed (text) {
     const songContains = (a, p) => R.path(['metadata', p], a).toLowerCase().indexOf(text.toLowerCase()) > -1
-    const currentlyDisplayed = this.props.songs
+    let currentlyDisplayed = this.props.songs
       .filter(song =>
         songContains(song, 'title') ||
         songContains(song, 'artist') ||
         songContains(song, 'genre')
       )
-    this.setState({currentlyDisplayed})
+    this.setState({currentlyDisplayed: currentlyDisplayed.filter(song => R.contains(song.genre, this.state.selectedGenres))})
   }
   render () {
     const songs = this.state.currentlyDisplayed || []
@@ -40,8 +41,8 @@ class MusicPlayer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { songs = [] } = state.songs
-  return { songs }
+  const { songs = [], genres = [] } = state.songs
+  return { songs, genres }
 }
 
 const mapDispatchToProps = (dispatch) => {
